@@ -16,7 +16,7 @@ def predict(model, input_df):
 def run():
 
     from PIL import Image
-    st.beta_set_page_config(page_title='Loan Eligibility App')
+    st.set_page_config(page_title='Loan Eligibility App')
     st.sidebar.header('Loan Eligibility App')
     image_loan = Image.open('loan.jpg')
 
