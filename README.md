@@ -1,5 +1,4 @@
-# Loan Prediction App using Streamlit and PyCaret
-#### A beginner's guide to deploy machine learning app on Heroku PaaS
+# Loan Prediction App using Streamlit and Pickle
 
 My Website : http://saeed.js.org
 

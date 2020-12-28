@@ -1,4 +1,3 @@
-# from pycaret.classification import load_model, predict_model
 import pickle
 import streamlit as st
 import pandas as pd
@@ -17,21 +16,17 @@ def predict(model, input_df):
 def run():
 
     from PIL import Image
+    st.beta_set_page_config(page_title='Loan Eligibility App')
+    st.sidebar.header('Loan Eligibility App')
     image_loan = Image.open('loan.jpg')
-
-    # add_selectbox = st.sidebar.selectbox(
-    # "How would you like to predict?",
-    # ("Online", "Batch"))
 
     st.sidebar.info('This app is created to predict whether an applicant is eligible for a loan or not.')
     st.sidebar.success('http://saeed.js.org')
     
     st.sidebar.image(image_loan,use_column_width=True)
 
-    st.title("Loan Eligibility App")
+    st.title("Please fill this form")
 
-    # if add_selectbox == 'Online':
-        # load_id = 'LP'
     gender = st.selectbox('Gender', ['Male', 'Female'])
     if st.checkbox('Married'):
         married = 'yes'
@@ -76,17 +71,6 @@ def run():
             st.success('The applicant is eligible for loan')
         else:
             st.error('The applicant is not eligible for loan')
-
-        
-
-    # if add_selectbox == 'Batch':
-
-    #     file_upload = st.file_uploader("Upload csv file for predictions", type=["csv"])
-
-    #     if file_upload is not None:
-    #         data = pd.read_csv(file_upload)
-    #         predictions = predict_model(estimator=model,data=data)
-    #         st.write(predictions)
 
 if __name__ == '__main__':
     run()
