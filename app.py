@@ -1,13 +1,18 @@
-from pycaret.classification import load_model, predict_model
+# from pycaret.classification import load_model, predict_model
+import pickle
 import streamlit as st
 import pandas as pd
 import numpy as np
+import joblib
 
-model = load_model('deployment_28042020')
+
+pickle_in = open('classifier.pkl', 'rb') 
+model = pickle.load(pickle_in)
 
 def predict(model, input_df):
-    predictions_df = predict_model(estimator=model, data=input_df)
-    predictions = predictions_df['Label'][0]
+    prediction_array = np.array([input_df['Gender'][0], input_df['Married'][0], input_df['Dependents'][0],input_df[ 'Education'][0], input_df['Self_Employed'][0], input_df['ApplicantIncome'][0],input_df['CoapplicantIncome'][0], input_df['LoanAmount'][0], input_df['Loan_Amount_Term'][0],input_df['Credit_History'][0], input_df['Property_Area'][0]])              
+    final_array = [prediction_array[0],prediction_array[1],prediction_array[2],prediction_array[3],prediction_array[4],prediction_array[5],prediction_array[6],prediction_array[7],prediction_array[8],prediction_array[9],prediction_array[10]]
+    predictions = model.predict([final_array])
     return predictions
 
 def run():
